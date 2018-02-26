@@ -9,20 +9,20 @@ $(document).ready(function(){
     var totalScore = 0;
     //Make array for selecting gems randomly
     const $gemsGenerator = [
-        '<img src="assets/images/blue-gem.jpg"/>',
-        '<img src="assets/images/green-gem.jpg"/>',
-        '<img src="assets/images/purple-gem.jpg"/>',
-        '<img src="assets/images/purple2-gem.jpg"/>',
-        '<img src="assets/images/red-gem.jpg"/>',
-        '<img src="assets/images/tydie-gem.jpg"/>',
-        '<img src="assets/images/white-gem.jpg"/>',
-        '<img src="assets/images/white2-gem.jpg"/>',
+        '<img src="assets/images/blue-gem.jpg" class="gems" />',
+        '<img src="assets/images/green-gem.jpg" class="gems" />',
+        '<img src="assets/images/purple-gem.jpg" class="gems"  />',
+        '<img src="assets/images/purple2-gem.jpg" class="gems"  />',
+        '<img src="assets/images/red-gem.jpg" class="gems"  />',
+        '<img src="assets/images/tydie-gem.jpg" class="gems" />',
+        '<img src="assets/images/white-gem.jpg" class="gems"  />',
+        '<img src="assets/images/white2-gem.jpg" class="gems"  />',
     ];
     console.log($gemsGenerator)
 
     //Make a random object for guessing random number, gem images, gem random number
     var random = {
-        num:    function() { //Generate Random number between 19-120
+        num:    function() { // Number between 19-120
                     return(Math.floor((Math.random() * 120) + 19));
                 },
 
@@ -34,30 +34,63 @@ $(document).ready(function(){
                     return(gemArr);
                 },
 
-        gemNum: function() { //Generate Random number between 1-12
-                    return(Math.floor((Math.random() * 12)));
-                }
+        gemNum: function() { // Four values between 1-12
+                    // const values = [];
+                    // for ( i = 0; i < 4; i++) {
+                    //    values.push((
+                          return(Math.floor((Math.random() * 12) + 1));
+                    //     ));
+                    //     };
+                    // return(values)
+                },
+
     };
     console.log(random.num());//expected
     console.log(random.gemImg($gemsGenerator));//expected
     console.log(random.gemNum());//expected
 
-
-    //Make selectors for Random Number, Win, Losses, totalScore, Gems parent, Gems objects
+    //Make selectors for Random Number, Win, Losses, totalScore, Gems parent, ems array
     const $rNum = $("#randomNum").text(random.num());
     const $wins = $("#wins").text(wins);
     const $losses = $("#losses").text(losses);
     const $totalScore = $("#totalScore").text(totalScore);
 
-    //After random.gemImg has generated and array of images, each of those images are appended to the gemBox div
+    //Generate the gem image divs that take an array of randomly chosen gems
     function $gemBox($arr) {
         for (i=0; i< $arr.length; i++){
-            $(".gemBox").append($arr[i]);
-            
+            $(".gemBox").append($arr[i]);  
         }
     };
-    $gemBox(random.gemImg($gemsGenerator))
-    console.log($gemBox(random.gemImg($gemsGenerator)));
+
+    ////NEED HELP////
+    //Assign random gem values to each of the gem image divs
+    var gemBtn = $gemBox(random.gemImg($gemsGenerator));
+    //I want to say for each gem div generated add a class called gem button
+    //so I can use that class to pass a random number from the random number array
+    $.each(gemBtn,function(i,val){
+        gemBtn.addClass("gem-button");
+
+        // for(j=0; j< random.gemNum().length; j++){
+            $(".gem-button").val(random.gemNum());    
+        // };
+    });
+
+    ////NEED HELP////
+    //On Gem Click
+    //     //Check to see if totalScore is equal to rNum
+    //     //Else add number to totalScore
+    $(".gem-button").on("click", function(){
+
+        if ($totalScore == $rNum){
+            wins++;
+        }
+        else if($totalScore< $rNum){
+            $totalScore += $this.val();
+        }
+        else{
+            losses++;
+        }
+    }); 
 
     //Make functions for gameplay
 
@@ -81,9 +114,7 @@ $(document).ready(function(){
     //     //Gems from generator(function)
     //     //Gems generate random number(function)
 
-    //     //On Gem Click
-    //     //Add generated number to totalScore- if click===0 generate number 
-    //     //Else add number to totalScore
+    //     
 
     //     //Logical if
     //     // Check if totalScore === ranomNum increment wins
