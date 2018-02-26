@@ -69,10 +69,12 @@ $(document).ready(function(){
     //so I can use that class to pass a random number from the random number array
     $.each(gemBtn,function(i,val){
         gemBtn.addClass("gem-button");
-
+        gemBtn.attr("data-value",random.gemNum())
+    //I want to associate a random value to this class however, if they all get this same class
+    //I am not sure how the number are going to be different without 
         // for(j=0; j< random.gemNum().length; j++){
-            $(".gem-button").val(random.gemNum());    
-        // };
+        //     $(".gem-button").val(random.gemNum());    
+        // // };
     });
 
     ////NEED HELP////
@@ -80,7 +82,6 @@ $(document).ready(function(){
     //     //Check to see if totalScore is equal to rNum
     //     //Else add number to totalScore
     $(".gem-button").on("click", function(){
-
         if ($totalScore == $rNum){
             wins++;
         }
@@ -102,27 +103,5 @@ $(document).ready(function(){
     // };
     // gamestart();
     // console.log(gamestart());
-
-
-
-
-
-    // //On page load generate or on game restart
-    // $(function () {
-
-    //     //Random Number to guess
-    //     //Gems from generator(function)
-    //     //Gems generate random number(function)
-
-    //     
-
-    //     //Logical if
-    //     // Check if totalScore === ranomNum increment wins
-    //     //Game Restart
-    //     // Check if totalScore > randomNum increment losses
-    //     //Game Restart
-
-
-    // });
 
     })
