@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -15,36 +16,67 @@
 </head>
 <body>
     <div class="container">
-        <header id="logo"><h1>Gems Collector!</h1></header>
-        <div id="instruction">
-            <p>You will be given a random number at the start of the game</p>
-            <p>There are four gems Below. By clicking on a gem you will add a specific amount of points to your total score.</p>
-            <p>You win the game by mathcing your total score to random number, you lose the game if you go above the random number.</p>
-            <p>The value for each gem is hidden from you until you click on it.</p>
-            <p>Each time when the game start, the game will change the value of the gem.</p>
-        </div>
+        <div class="row">
+            <div class = "col-12">
+                <nav class="navbar navbar-dark bg-dark">
+                    <a>Porfolio</a>
+                </nav>
 
-        <div>
-            <div id="randomNum">Number</div>
-            <div id="score"> 
-                <p class="wl"> Wins: <span id="wins"></span></p>
-                <p class="wl"> Losses: <span id="losses"></span></p>
-            </div>   
+            </div>
         </div>
+    
 
-        <div class="gemBox">
-            <!-- <img src="assets/images/blue-gem.jpg" class="blue gems" />
-            <img src="assets/images/green-gem.jpg" class="green gems"/>
-            <img src="assets/images/purple-gem.jpg" class="purple gems"/>
-            <img src="assets/images/tydie-gem.jpg" class="tydie gems"/> -->
+    <div class="jumbotron">
+        <header><h1 class=" display-2 text-center">Gems Collector!</h1></header>
+        <div id="shadow">
+            <p>You will be given a random number at the start of the game
+            There are four gems Below. By clicking on a gem you will add a specific amount of points to your total score.</p>
+            
+            <p>You win the game by mathcing your total score to random number, you lose the game if you go above the random number.
+            The value for each gem is hidden from you until you click on it.</p>
+
+            <p>Each time when the game start, the game will change the value of the gems.</p>
+        
+   
+        <div class="card-group">
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                
+                <h4 class="text-center" id="randomNum">Number</h4>
+                
+            </div>
+            <!-- <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <h4 class="score">You total score is </h4>
+                
+            </div> -->
+
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <h4 class="text-center"> Wins </h4>
+                <h4 class="text-center" id="win">0</h4>
+            </div>
+
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <h4 class="text-center"> Losses</h4>
+                <h4 class="text-center" id="loss">0</h4>
+            </div>
+
+           
         </div>
+    <br><br>
+    <hr>
+        
 
-        <div>
+        <div class="text-center gemBox">
+        
+        </div>
+    <br>
+    <br>
+        <!-- <div>
             <p class="score">You total score is :</p>
             <p class="score"><span id="totalScore">nothing</span></p>  
-        </div>
+        </div> -->
     </div>
-
+    </div>
+</div>
 
 
     <script type="text/javascript" src="./assets/javascript/game.js"></script>

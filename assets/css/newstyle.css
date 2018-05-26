@@ -1,0 +1,33 @@
+
+
+.container {
+    margin: auto;
+    /* background: url(../images/bg.jpg) */
+}
+
+.center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
+
+
+/* Gems */
+#instruction,
+#randomNum,
+#scoreBox,
+#totalScore,
+.score,
+.wl,
+#scoreBox,
+p,
+.gemBox{
+    margin: 5px 0 0 5px;
+
+}
+.gems {
+    width: 78px;
+    height: 78px;
+    margin-top: 8px;
+    margin-right: 5px;
+}

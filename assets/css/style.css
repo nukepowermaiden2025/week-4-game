@@ -1,89 +1,47 @@
-body {
-    
-    font-size: 18px;
-    line-height: 22px;
-    font-family:Arial, Helvetica, sans-serif;
-    color:black; 
+.center-div{
+    margin: 0 auto;
+    width: 100px;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    background: url(../images/bg.jpg)
+
+.jumbotron{
+    background: url(../images/background.jpg);
 }
 
 /* header */
-#logo {
-    width: 350px;
-    height: 90;
-    background: black;
-    float:left;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    line-height: 90px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 30px;
-    text-decoration:none; 
-    margin: 5px 0 5px 5px;
+header {
+    background-color:rgba(46, 139, 86, 0.652);
 }
 
 /* Instructions */
-#instruction,
-#randomNum,
-#scoreBox,
-#totalScore {
-    width: 450px;
-    background: tan;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: black;
-    font-size: 14px;
-    text-decoration:none; 
-    clear: both;   
+#shadow{
+   background-color:rgba(119, 136, 153, 0.652);
+   padding: 10px 10px 10px 10px ;
+
 }
+#shadow > p{
+    font-weight: 600;
+}
+
+
 
 
 
 /* RandomNumber */
-#randomNum{
-    background: rgba(0, 128, 128);
-    width: 150px;
-    height: 100px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 22px;
-    font-weight: 900;
-    text-align: center;
-    padding-top: 50px;
-}
 
 
 /* Score Box */
-.score,
-.wl,
-#scoreBox,
-#totalScore{
-    background: rgb(122, 100, 60);
-    width: 150px;
-    font-size: 18px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+
 
 /* Gems */
-#instruction,
-#randomNum,
-#scoreBox,
-#totalScore,
-.score,
-.wl,
-#scoreBox,
-p,
-.gemBox{
-    margin: 5px 0 0 5px;
 
-}
-.gems {
+.gem {
     width: 78px;
     height: 78px;
     margin-top: 8px;
     margin-right: 5px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+    
 }
