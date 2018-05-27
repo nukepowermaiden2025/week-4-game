@@ -3,156 +3,80 @@
 //Author: kourtney.reynolds@gmail.com
 
 $(document).ready(function(){
-    //Make variables
-    let wins = 0;
-    let losses = 0;
-    let totalScore = 0;
-    //Make array for looping gems 
-    let gemsArr = [
-        'blue-gem.jpg',
-        'green-gem.jpg', 
-        'purple-gem.jpg',
-        'tydie-gem.jpg'
-    ];
+    //Funcs
+  
 
-    //Check sources"
-    for( let i =0; i<gemsArr.length; i++){
-        let source = "assets/images/"+gemsArr[i];
-        console.log(source);
-    }
-   
-    // const gemsArr = [
-    //     'https://placeimg.com/100/100/animals',
-    //     'https://placeimg.com/100/100/animals', 
-    //     'https://placeimg.com/100/100/animals',
-    //     'https://placeimg.com/100/100/animals'
-    // ];
+        function randomNum(){
+            return( Math.floor(Math.random()*12)+1);
+        };
+        function guessNum(){
+            return(Math.floor((Math.random() * 120) + 19))
+        };
+        //Vars
 
+        
+        let wins = 0;
+        let losses = 0;
+        let random = guessNum();
+        // let totalScore = 0;
+        //Make array for looping gems 
+        let gemsArr = [
+            'blue-gem.jpg',
+            'green-gem.jpg', 
+            'purple-gem.jpg',
+            'tydie-gem.jpg'
+        ];
+
+        function gemBuild(){
+            for(i=0; i <gemsArr.length; i++){
+            $("<img>").attr({
+                    'src':"assets/images/"+gemsArr[i],
+                    'alt':"Gem Images",
+                    'class':"gem",
+                    "data-value":parseInt(randomNum())
+                }).appendTo($(".gemBox"));
     
-    function randomNum(){
-        let num = Math.floor(Math.random()*12);
-        return num
-    };
-    function guessNum(){
-        return(Math.floor((Math.random() * 120) + 19))
-    }
+            };
+        };
+        
+        function reset(){
+            random = guessNum();
+            $(".gemBox").empty();
+            $('#num').text(random);
+            gemBuild();
 
-    $("<div>").text(guessNum()).appendTo($("#randomNum"));
-
-    for(i=0; i <gemsArr.length; i++){
-    $("<img>").attr({
-            'src':"assets/images/"+gemsArr[i],
-            'alt':"Gem Images",
-            'class':"gem",
-            "data-value":parseInt(randomNum())
-        }).appendTo($(".gemBox"))
-
-    }
-
-    $(".gem").on("click",function(){
-        console.log($(this).data("value"));
-    })
-    
+            
+            $(".gem").on("click",function(){
+                if(random > 0){
+                    random -= parseInt($(this).data("value"));
+                    $("#num").text(random);
+        
+                }else if(random === 0){
+                    alert("You win!");
+                    wins ++;
+                    $("#win").text(wins);
+                    reset(); //call recursively to keep going
+                }else{
+                    alert("You lose");
+                    losses ++;
+                    reset(); 
+                    $("#loss").text(losses);
+                    
+                }
+                
+                console.log(random);
+        
+            });
+        }
+        
+        
+        reset(); 
+        //Gems and random number logic
+       
 
 });
 
-// $(document).ready(function(){
-//     //Make variables
-//     var wins = 0;
-//     var losses = 0;
-//     var totalScore = 0;
-//     //Make array for selecting gems randomly
-//     const $gemsGenerator = [
-//         '<img src="assets/images/blue-gem.jpg" class="gems" />',
-//         '<img src="assets/images/green-gem.jpg" class="gems" />',
-//         '<img src="assets/images/purple-gem.jpg" class="gems"  />',
-//         '<img src="assets/images/purple2-gem.jpg" class="gems"  />',
-//         '<img src="assets/images/red-gem.jpg" class="gems"  />',
-//         '<img src="assets/images/tydie-gem.jpg" class="gems" />',
-//         '<img src="assets/images/white-gem.jpg" class="gems"  />',
-//         '<img src="assets/images /white2-gem.jpg" class="gems"  />',
-//     ];
-//     console.log($gemsGenerator);
+//Notes leaving the main body onclick outside of reset()
+//did not allow the game to restart
 
-//     //Make a random object for guessing random number, gem images, gem random number
-//     var random = {
-//         num:    function() { // Number between 19-120
-//                     return(Math.floor((Math.random() * 120) + 19));
-//                 },
 
-//         gemImg: function (myImgArr) {//Generate four Gems into an array
-//                     const gemArr = [];
-//                     for ( i = 0; i < 4; i++) {
-//                         gemArr.push(myImgArr[Math.floor((Math.random() * myImgArr.length))]);
-//                         };
-//                     return(gemArr);
-//                 },
-
-//         gemNum: function() { // Four values between 1-12
-//                           return(Math.floor((Math.random() * 12) + 1));   
-//                 },
-
-//     };
-//     console.log(random.num());//expected
-//     console.log(random.gemImg($gemsGenerator));//expected
-//     console.log(random.gemNum());//expected
-
-//     //Make selectors for Random Number, Win, Losses, totalScore, Gems parent, ems array
-//     let $rNum = $("#randomNum").text(random.num());
-//     let $wins = $("#wins").text(wins);
-//     let $losses = $("#losses").text(losses);
-//     let $totalScore = $("#totalScore").text(totalScore);
-
-//     //Generate the gem image divs that take an array of randomly chosen gems
-//     function $gemBox($arr) {
-//         for (i=0; i< $arr.length; i++){
-//             $(".gemBox").append($arr[i]);  
-//         }
-//     };
-
-//     ////NEED HELP////
-//     //Assign random gem values to each of the gem image divs
-//     var gemBtn = $gemBox(random.gemImg($gemsGenerator));
-//     //I want to say for each gem div generated add a class called gem button
-//     //so I can use that class to pass a random number from the random number array
-//     $(".gems").each(function(){
-//         $(this).addClass("gem-button");
-//         $(this).attr("data-value",random.gemNum());
-//     //I want to associate a random value to this class however, if they all get this same class
-//     //I am not sure how the number are going to be different without 
-//         // for(j=0; j< random.gemNum().length; j++){
-//         //     $(".gem-button").val(random.gemNum());    
-//         // // };
-//     });
-
-//     ////NEED HELP////
-//     //On Gem Click
-//     //     //Check to see if totalScore is equal to rNum
-//     //     //Else add number to totalScore
-//     $(".gem-button").on("click", function(){
-//         console.log($(this).attr("data-value"));
-//         if ($totalScore == $rNum){
-//             wins++;
-//         }
-//         else if($totalScore< $rNum){
-//             $totalScore += $this.val();
-//         }
-//         else{
-//             losses++;
-
-//         }
-       
-//     }); 
-
-//     //Make functions for gameplay
-
-//     // function gamereset() {
-//     //      random.num()
-//     //      wins = 0
-//     //     loss=0
-//     //     totalScore=0
-//     // };
-//     // gamestart();
-//     // console.log(gamestart());
-
-//     })
