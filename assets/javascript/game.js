@@ -12,9 +12,7 @@ $(document).ready(function(){
         function guessNum(){
             return(Math.floor((Math.random() * 120) + 19))
         };
-        //Vars
 
-        
         let wins = 0;
         let losses = 0;
         let random = guessNum();
@@ -63,17 +61,13 @@ $(document).ready(function(){
                     $("#loss").text(losses);
                     
                 }
-                
                 console.log(random);
         
             });
         }
-        
-        
-        reset(); 
-        //Gems and random number logic
-       
 
+    reset(); 
+       
 });
 
 //Notes leaving the main body onclick outside of reset()
