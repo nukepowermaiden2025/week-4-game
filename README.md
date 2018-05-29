@@ -8,7 +8,7 @@ This is a simple game that is served in the browser and is meant to demonstrate 
 
 
 ### Prerequisites
-None. This application will run the browser
+None. This application will run in the browser.
 
 ## Built With
 
