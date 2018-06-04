@@ -45,3 +45,16 @@ header {
     box-shadow: 5px 10px;
     
 }
+@media (min-width:369px){
+    .wrapper{
+        min-height:calc(100vh-55px);
+        overflow-x:hidden;
+        max-width: 100%;
+
+    }
+
+    .shadow{
+        min-height: 300px;
+    }
+    
+}
